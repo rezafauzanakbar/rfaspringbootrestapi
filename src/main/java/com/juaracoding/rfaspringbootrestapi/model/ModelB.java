@@ -40,7 +40,7 @@ public class ModelB {
     private Date modifiedDate;
 
     @ManyToOne
-    @JoinColumn(name = "IDModelA", foreignKey = @ForeignKey(name = "fkModelBToModelA"))
+    @JoinColumn(name = "IDModelA", foreignKey = @ForeignKey(name = "fkModelBToModelA", foreignKeyDefinition = "FOREIGN KEY ([IDModelA]) REFERENCES [ModelA] ([IDModelA]) ON DELETE SET NULL ON UPDATE SET NULL"))
     private ModelA ModelA;
 
     @ManyToMany(mappedBy = "listModelB")
