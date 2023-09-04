@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+import com.juaracoding.rfaspringbootrestapi.configuration.OtherConfiguration;
 
+import javax.validation.Valid;
 import java.io.IOException;
 import java.util.*;
 
@@ -32,7 +34,9 @@ public class HelloController {
 //    @PatchMapping("/permisi")
     @GetMapping("/permisi")
     public String firstPage() {
-        return "welcome";
+        //return "welcome";
+        System.out.println("Value Flag Loging : "+OtherConfiguration.getFlagLoging());
+        return OtherConfiguration.getFlagLoging();
     }
 
     @PostMapping("/permisi2")
@@ -41,7 +45,11 @@ public class HelloController {
     }
 
     @PostMapping("/seleksi")
-    public Map<String, Object> seleksiCalonPeserta(@RequestBody calonPeserta calon) {
+    public Map<String, Object> seleksiCalonPeserta(@Valid @RequestBody calonPeserta calon) {
+        System.out.println("Parkir Disini !!");
+        calon.setNilai(100);
+        calon.setUmur(79);
+
         Map<String, Object> mapz = new HashMap<>();
         mapz.put("message","OKK BOS!");
         mapz.put("waktu", new Date());

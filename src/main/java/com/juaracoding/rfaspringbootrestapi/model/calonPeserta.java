@@ -9,10 +9,24 @@ Created on 30/08/2023 11:40
 Version 1.0
 */
 
-public class calonPeserta {
+import org.hibernate.validator.constraints.Length;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import com.juaracoding.rfaspringbootrestapi.util.constantCalonPeserta;
+
+public class calonPeserta {
+    @NotNull(message = constantCalonPeserta.NAMA_NOT_NULL)
+    @NotEmpty(message = constantCalonPeserta.NAMA_NOT_EMPTY)
+    @Length(min = 5, max = 15,message = constantCalonPeserta.NAMA_MIN_MAX)
+    //@Email(message = "Format email tidak valid")
+    @NotBlank(message = constantCalonPeserta.NAMA_NOT_BLANK)
     private String nama;
+    @NotNull(message = constantCalonPeserta.UMUR_IS_MANDATORY)
     private Integer umur;
+    @NotNull(message = constantCalonPeserta.NILAI_IS_MANDATORY)
     private Integer nilai;
 
     public String getNama() {
